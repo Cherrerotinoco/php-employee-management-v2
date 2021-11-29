@@ -1,4 +1,31 @@
 <?php
+defined('BASEPATH') or exit('No se permite acceso directo');
+/**
+ * Modelo base
+ */
+class Model
+{
+  /**
+  * @var object
+  */
+  protected $db;
+
+  /**
+  * Inicializa conexion
+  */
+  public function __construct()
+  {
+    $this->db = conn();
+  }
+
+  /**
+  * Finaliza conexion
+  */
+  public function __destruct()
+  {
+    $this->db->close();
+  }
+}
 
 # Class to enable PDO connection
 // Create connection
@@ -18,6 +45,6 @@ function conn()
 
         return $pdo;
     } catch (PDOException $e) {
-        require_once(VIEWS . "/error/error.php");
+        //require_once(VIEWS . "/error/error.php");
     }
 }
