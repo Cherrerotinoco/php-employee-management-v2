@@ -23,9 +23,6 @@ $controller = $router->getController();
 $method = $router->getMethod();
 $param = $router->getParam();
 
-var_dump($controller, $method, $param);
-var_dump(CoreHelper::validateController($controller));
-
 /**
  * Validaciones e inclusión del controlador y el metodo 
  */
@@ -35,9 +32,6 @@ if (!CoreHelper::validateController($controller)) {
 
 $controller .= 'Controller';
 require PATH_CONTROLLERS . "{$controller}.php";
-
-echo PATH_CONTROLLERS;
-echo  $controller;
 
 
 if (!CoreHelper::validateMethodController($controller, $method))

@@ -1,11 +1,26 @@
 <!-- TODO Employee view -->
 
 <?php
-echo "<br>";
-echo $id;
-die();
-// require_once("../src/library/employeeManager.php");
-// require_once("../assets/html/header.html");
+
+if (isset($employees)) {
+  # render JS grid
+
+  require_once("./assets/html/header.html");
+  ?>
+  <div id="jsGrid"></div>
+  <?php
+  require_once("./assets/html/footer.html");
+
+}
+
+
+?>
+
+
+<?php # Edit || view employee
+/*
+require_once("../src/library/employeeManager.php");
+require_once("../assets/html/header.html");
 session_start();
 
 
@@ -108,3 +123,4 @@ if (isset($_GET['employeeId'])) {
 <?php
 require_once("../assets/html/footer.html");
 ?>
+*/

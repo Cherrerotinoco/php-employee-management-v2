@@ -13,9 +13,9 @@ class LoginModel extends Model
   }
 
   public function signIn($email)
-  {
-    $email = $this->db->real_escape_string($email);
-    $sql = "SELECT email, password FROM usuarios WHERE email = '{$email}'";
+  { 
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $sql = "SELECT email, encrypted_password FROM users WHERE email = '{$email}'";
     return $this->db->query($sql);
   }
 

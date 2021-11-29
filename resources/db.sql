@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
   user_id BIGINT NOT NULL,
   email CHAR(255) NOT NULL,
   username VARCHAR(64) NOT NULL,
-  encrypted_password CHAR(40) NOT NULL,
+  encrypted_password CHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
 -- CREATE TABLE EMPLOYEES

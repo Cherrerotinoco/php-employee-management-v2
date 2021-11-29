@@ -26,27 +26,25 @@ class LoginController extends Controller
 
   public function signin($request_params)
   {
-    if ($this->verify($request_params))
-      return $this->renderErrorMessage('El email y password son obligatorios');
 
-    $result = $this->model->signIn($request_params['email']);
+    if ($this->verify($request_params)) return $this->renderErrorMessage('El email y password son obligatorios');
 
-    if (!$result->num_rows)
-      return $this->renderErrorMessage("El email {$request_params['email']} no fue encontrado");
+    $result = $this->model->signIn($request_params['loginMail']);
 
-    $result = $result->fetch_object();
+    $result = $result->fetch();
 
-    if (!password_verify($request_params['password'], $result->password))
-      return $this->renderErrorMessage('La contraseña es incorrecta');
+    if (count($result) === 0) return $this->renderErrorMessage("El email {$request_params['loginMail']} no fue encontrado");
+
+    if (!password_verify($request_params['loginPassword'], $result['encrypted_password'])) return $this->renderErrorMessage('La contraseña es incorrecta');
 
     $this->session->init();
-    $this->session->add('email', $result->email);
-    header('location: /php-mvc/main');
+    $this->session->add('email', $result['email']);
+    header('location: '.FOLDER_PATH.'/employee/all');
   }
 
   private function verify($request_params)
-  {
-    return empty($request_params['email']) or empty($request_params['password']);
+  { 
+    return empty($request_params['loginMail']) or empty($request_params['loginPassword']);
   }
 
   private function renderErrorMessage($message)

@@ -44,7 +44,7 @@
         <div class="justify-content-center">
           <h3>Sign In</h3>
         </div>
-        <form action="./src/library/loginController.php" class="px-4 py-3" method="POST">
+        <form action="login/signin" class="px-4 py-3" method="POST">
           <div class="form-group">
             <label for="exampleDropdownFormEmail1">Email address</label>
             <input name="loginMail" type="email" class="form-control" id="exampleDropdownFormEmail1"
@@ -62,6 +62,8 @@
     </div>
   </div>
   <?php
+    
+    echo $error_message;
 
     if (isset($_GET['error'])) {
         if ($_GET['error'] == "invaliAuth") {
