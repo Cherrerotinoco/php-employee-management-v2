@@ -19,7 +19,7 @@ class View
    * array
    */
   protected $params;
-  
+
   /**
    * Inicializa valores y el render
    * @param string $controller_name
@@ -37,11 +37,11 @@ class View
    */
   protected function render()
   {
-    if(class_exists($this->controller_name)){
+    if (class_exists($this->controller_name)) {
       $file_name = str_replace('Controller', '', $this->controller_name);
       $this->template = $this->getContentTemplate($file_name);
       echo $this->template;
-    }else{
+    } else {
       throw new Exception("Error No existe $this->controller_name");
     }
   }
@@ -51,17 +51,16 @@ class View
    */
   protected function getContentTemplate($file_name)
   {
-    $file_path = ROOT . '/' . PATH_VIEWS . "$file_name" . '.php';
-    if(is_file($file_path)){
-      extract($this->params); 
+    $file_path = ROOT . PATH_VIEWS . "$file_name" . '.php';
+    if (is_file($file_path)) {
+      extract($this->params);
       ob_start(); // Init buffer
       require($file_path); // Get file 
       $template = ob_get_contents(); // Get HTML content
       ob_end_clean(); // Closes buffer
       return $template;
-    }else{
+    } else {
       throw new Exception("Error No existe $file_path");
     }
   }
-
 }

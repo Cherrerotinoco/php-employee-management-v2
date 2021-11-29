@@ -14,13 +14,6 @@ class EmployeeController extends Controller
 
   public function exec()
   {
-
-
     $this->render(__class__, array('path_inicio' => $this->path_inicio));
-  }
-
-  function edit($id)
-  {
-    $this->render(__class__, array('id' => $id));
   }
 }

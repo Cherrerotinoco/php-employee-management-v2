@@ -1,10 +1,4 @@
-<?php
-require("./src/library/loginController.php");
-session_start();
-$alert = $_SESSION['loginError'];
-$autoLogout = $_SESSION['autoLogout'];
-?>
-
+<!-- TODO Application entry point. Login view -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +15,7 @@ $autoLogout = $_SESSION['autoLogout'];
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-          <img src="../img/gatito3.svg" width="30" height="30" class="d-inline-block align-top" alt="" />To do Logo
+          <img src="assets/img/assembler_logo.jfif" width="30" height="30" class="d-inline-block align-top" alt="" />
         </a>
       </nav>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -60,7 +54,6 @@ $autoLogout = $_SESSION['autoLogout'];
             <label for="exampleDropdownFormPassword1">Password</label>
             <input name="loginPassword" type="password" class="form-control" id="exampleDropdownFormPassword1"
               placeholder="Password" />
-            <!-- ($alert) ? "<div class='alert alert-$alert[type] role='alert'>$alert[text]</div>" : "" > -->
           </div>
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
@@ -68,13 +61,28 @@ $autoLogout = $_SESSION['autoLogout'];
       </div>
     </div>
   </div>
-  <!-- <footer class="bg-dark text-center text-white fixed-bottom">
+  <?php
+
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == "invaliAuth") {
+            echo "<div class='alert alert-danger'> <h3> You don't have permission to enter the dashboard. Please Login.</h3></div>";
+            unset($_GET['error']);
+        }
+    }
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == "autoLogout") {
+            echo "<div class='alert alert-danger'> <h3> The session has expired due to user inactivity.</h3></div>";
+            unset($_GET['error']);
+        }
+    }
+    ?>
+  <footer class="bg-dark text-center text-white fixed-bottom">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       ©
       <?= date("Y") ?>
       Copyright: Sergi and Andrecito
     </div>
-  </footer>-->
+  </footer>
 </body>
 
 </html>

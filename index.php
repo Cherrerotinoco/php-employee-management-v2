@@ -1,8 +1,13 @@
 <?php
+//  Add these lines somewhere on top of your PHP file: 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 define('BASEPATH', true);
 
 require 'config.php';
-require 'system/core/autoload.php';
+require 'src/core/autoload.php';
 
 /**
  * Nivel de errores notificados
@@ -18,19 +23,24 @@ $controller = $router->getController();
 $method = $router->getMethod();
 $param = $router->getParam();
 
+var_dump($controller, $method, $param);
+var_dump(CoreHelper::validateController($controller));
+
 /**
  * Validaciones e inclusión del controlador y el metodo 
  */
-if(!CoreHelper::validateController($controller))
+if (!CoreHelper::validateController($controller)) {
   $controller = 'ErrorPage';
-
+}
 
 $controller .= 'Controller';
 require PATH_CONTROLLERS . "{$controller}.php";
 
+echo PATH_CONTROLLERS;
+echo  $controller;
 
 
-if(!CoreHelper::validateMethodController($controller, $method))
+if (!CoreHelper::validateMethodController($controller, $method))
   $method = 'exec';
 
 /**
