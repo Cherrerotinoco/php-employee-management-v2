@@ -1,4 +1,5 @@
 <?php
+
 //  Add these lines somewhere on top of your PHP file: 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -32,6 +33,8 @@ if (!CoreHelper::validateController($controller)) {
 
 $controller .= 'Controller';
 require PATH_CONTROLLERS . "{$controller}.php";
+
+var_dump(PATH_CONTROLLERS . "{$controller}.php");
 
 
 if (!CoreHelper::validateMethodController($controller, $method))

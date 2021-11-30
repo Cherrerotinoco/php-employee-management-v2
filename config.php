@@ -13,7 +13,7 @@ define('REQUEST_METHOD', $_SERVER['REQUEST_METHOD']);
 // Valores de rutas
 /////////////////////////////////////
 
-define('FOLDER_PATH', '/php-employee-management-v2'); //! ADDED FORKS PATH
+define('FOLDER_PATH', '/FORKS/php-employee-management-v2'); //! ADDED FORKS PATH
 
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
@@ -30,16 +30,16 @@ define('LIBS_ROUTE', ROOT . FOLDER_PATH . '/src/libs/');
 /////////////////////////////////////
 
 define('CORE', 'src/core/');
-define('DEFAULT_CONTROLLER', 'Home');
+define('DEFAULT_CONTROLLER', 'login');
 
 //////////////////////////////////////
 // Valores de base de datos
 /////////////////////////////////////
 
 define('HOST', 'localhost'); // in Mac 127.0.0.1
-define('DB', 'mvc_basics_2');
+define('DB', 'V2');
 define('USER', 'root');
-define('PASSWORD', '0Extremo0');
+define('PASSWORD', '');
 define('CHARSET', 'utf8mb4');
 
 //////////////////////////////////////

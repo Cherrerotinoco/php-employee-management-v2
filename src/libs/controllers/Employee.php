@@ -21,7 +21,7 @@ class EmployeeController extends Controller
   }
 
   function all()
-  { 
+  {
     $employees = 'helo';
     $this->render(__class__, array('employees' => $employees));
   }
@@ -31,24 +31,26 @@ class EmployeeController extends Controller
     $this->render(__class__, array('id' => $id));
   }
 
-  function getAllEmployees() {
+  function getAllEmployees()
+  {
     $model = new EmployeeModel();
     $employees = $model->getAll();
     echo json_encode($employees);
   }
 
-  function add($params) {
+  function add($params)
+  {
     $employee = json_decode(array_keys($params)[0], true);
     $model = new EmployeeModel();
     $res = $model->create($employee);
     var_dump($res);
   }
 
-  function update($employeeId) {
-
+  function update($employeeId)
+  {
   }
 
-  function delete($employeeId) {
-
+  function delete($employeeId)
+  {
   }
 }
